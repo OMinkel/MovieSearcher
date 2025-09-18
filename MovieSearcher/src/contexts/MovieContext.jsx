@@ -24,7 +24,7 @@ const movieReducer = (state, action) => {
   }
 };
 
-export const MovieProvider = ({ children }) => {
+export const MoviesProvider = ({ children }) => {
   const [state, dispatch] = useReducer(movieReducer, initialState);
 
   const setMovies = (movies) => dispatch({ type: 'SET_MOVIES', payload: movies });

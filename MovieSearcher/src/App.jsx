@@ -1,8 +1,8 @@
 import React from 'react';
-import { MoviesProvider } from './contexts/MoviesContext';
+import { MoviesProvider } from './contexts/MovieContext';
 import SearchBar from './components/SearchBar';
 import MovieGrid from './components/MovieGrid';
-import './styles/MovieApp.css'; // Asegúrate de crear este archivo CSS
+import './styles/movieapp.css';
 
 function App() {
   return (

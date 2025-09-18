@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import { MoviesContext } from '../contexts/MoviesContext';
+import { MovieContext } from '../contexts/MovieContext';
 
 export const useMovies = () => {
-  const context = useContext(MoviesContext);
+  const context = useContext(MovieContext);
   if (!context) {
     throw new Error('useMovies debe ser usado dentro de MoviesProvider');
   }
