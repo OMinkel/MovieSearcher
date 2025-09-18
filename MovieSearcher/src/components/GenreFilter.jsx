@@ -2,19 +2,23 @@ import React from 'react';
 import { useMovies } from '../hooks/useMovies';
 
 const GenreFilter = () => {
-  const { state, setFilter } = useMovies(); // Asumiendo que has agregado un `setFilter` al contexto
-
-  const genres = ['Sci-Fi', 'Thriller', 'Crime']; // Deberías obtener estos de tus datos
-
-  const handleFilter = (genre) => {
-    // Implementa la lógica de filtrado aquí
-  };
+  const { state, setFilterGenre } = useMovies();
+  const genres = ['Sci-Fi', 'Thriller', 'Crime'];
 
   return (
     <div className="genre-filter">
-      <button onClick={() => handleFilter('all')}>Todos</button>
+      <button
+        onClick={() => setFilterGenre('all')}
+        className={state.filterGenre === 'all' ? 'active' : ''}
+      >
+        Todos
+      </button>
       {genres.map(genre => (
-        <button key={genre} onClick={() => handleFilter(genre)}>
+        <button
+          key={genre}
+          onClick={() => setFilterGenre(genre)}
+          className={state.filterGenre === genre ? 'active' : ''}
+        >
           {genre}
         </button>
       ))}

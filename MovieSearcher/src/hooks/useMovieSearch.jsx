@@ -1,20 +1,19 @@
-import { useContext, useCallback } from 'react';
-import { MovieContext } from '../contexts/MovieContext';
+import { useCallback, useEffect } from 'react';
+import { useMovies } from './useMovies';
 import { movieService } from '../services/movieService';
 
 export const useMovieSearch = () => {
-  const { state, setMovies, setLoading, setError, setSearchQuery } = useContext(MovieContext);
+  const { state, setMovies, setLoading, setError, setSearchQuery } = useMovies();
 
+  // Función de búsqueda con useCallback para memoizarla
   const searchMovies = useCallback(async (query) => {
     if (!query.trim()) {
       setMovies([]);
-      setSearchQuery('');
       return;
     }
     
     setLoading(true);
     setError(null);
-    setSearchQuery(query);
 
     try {
       const results = await movieService.searchMovies(query);
@@ -25,10 +24,11 @@ export const useMovieSearch = () => {
     } finally {
       setLoading(false);
     }
-  }, [setMovies, setLoading, setError, setSearchQuery]);
+  }, [setMovies, setLoading, setError]);
 
   return {
     ...state,
     searchMovies,
+    setSearchQuery // Retornamos la función para actualizar el query
   };
 };

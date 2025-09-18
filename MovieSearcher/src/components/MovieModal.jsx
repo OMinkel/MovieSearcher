@@ -9,7 +9,6 @@ const MovieModal = ({ movie, onClose }) => {
         <button className="close-button" onClick={onClose}>&times;</button>
         <h2>{movie.title} ({movie.year})</h2>
         <p>Género: {movie.genre}</p>
-        {/* Aquí podrías agregar más detalles de la película */}
       </div>
     </div>
   );
